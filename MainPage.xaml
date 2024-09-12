@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:System="clr-namespace:System;assembly=netstandard"
+             x:Class="basura.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout BindingContext="{x:Static System:DateTime.Now}"
+            Padding="30,0"
+            Spacing="25">
+
+            <Entry
+                x:Name="colorIngresado"
+                Placeholder="Ingresar Color" />
+
+
+            <Button
+                x:Name="SubmitColor"
+                Text="Agregar" 
+                SemanticProperties.Hint="Counts the number of times you click"
+                Clicked="OnSubmitColor"
+                HorizontalOptions="Fill" />
+
+
+            <Label
+                x:Name="coloresAgr"
+                Text="Colores agregados:"
+                Style="{StaticResource SubHeadline}"
+                SemanticProperties.HeadingLevel="Level2"
+                SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
+
+            <ListView
+            x:Name="ColorListView" 
+            ItemsSource="{Binding Colors}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding .}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Label
+                x:Name="ProductosAgr"
+                Text="Agregar Producto"
+                Style="{StaticResource SubHeadline}"
+                SemanticProperties.HeadingLevel="Level1"
+                SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
+
+            <Entry
+                x:Name="nombreProducto"
+                Placeholder="Nombre de producto" />
+
+            <Picker
+                x:Name="ColorPicker"
+                SelectedIndexChanged="OnColorPickerSelectedIndexChanged"
+                BackgroundColor="LightGray">
+
+            </Picker>
+
+
+            <Button
+                x:Name="SubmitProducto"
+                Text="Agregar" 
+                SemanticProperties.Hint="Agrega un producto"
+                Clicked="OnSubmitProducto"
+                HorizontalOptions="Fill" />
+
+            <ListView
+            x:Name="ProductListView"
+            ItemsSource="{Binding Products}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding Nombre}" Detail="{Binding Color}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
